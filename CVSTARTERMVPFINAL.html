@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Edisi MVP — CV Starter Kit</title>
+<script>document.documentElement.className='js'</script>
+<style>
+:root{--bg:#f7f6f1;--ink:#0b2150;--mut:#52668a;--blue:#2a5db0;--sky:#9cc0f5;--pale:#e3eefb;--card:#fff;--line:#d5dfee;--deep:#0b2150;--on:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#081a3e;--ink:#eaf1ff;--mut:#a3b8dc;--blue:#6a9ee8;--pale:#102a57;--card:#0e2450;--line:#25427a;--deep:#050f26}}
+:root[data-theme="dark"]{--bg:#081a3e;--ink:#eaf1ff;--mut:#a3b8dc;--blue:#6a9ee8;--pale:#102a57;--card:#0e2450;--line:#25427a;--deep:#050f26}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 18px/1.65 "Avenir Next","Segoe UI",Helvetica,Arial,sans-serif;overflow-x:hidden}
+h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-.03em;line-height:1.05}
+h1{font-size:clamp(2.7rem,6.6vw,5.4rem)}h2{font-size:clamp(2rem,4.6vw,3.4rem)}h3{font-size:1.25rem;letter-spacing:-.01em}
+.ac{font:italic 400 1em Georgia,"Times New Roman",serif;color:var(--blue);letter-spacing:-.01em}
+p{margin:.5rem 0;color:var(--mut)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:8px}
+.w{max-width:1160px;margin:0 auto;padding:0 24px}
+section{padding:96px 0;position:relative}
+.chip{display:inline-flex;align-items:center;gap:9px;background:var(--pale);color:var(--ink);padding:7px 15px;border-radius:99px;font-size:.90rem;font-weight:600}
+.dot{width:9px;height:9px;border-radius:50%;background:#2fbf71;animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(47,191,113,.6)}100%{box-shadow:0 0 0 12px rgba(47,191,113,0)}}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:99px;border:2px solid var(--blue);background:var(--blue);color:#fff;font:700 1.04rem inherit;font-family:inherit;text-decoration:none;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 28px -12px var(--blue)}
+.btn.o{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.o:hover{border-color:var(--blue);box-shadow:none}
+/* header */
+header.top{position:fixed;left:0;right:0;top:0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+header.top.hide{transform:translateY(-130%)}
+.bar0{position:absolute;left:0;top:0;height:3px;width:100%;background:var(--blue);transform:scaleX(var(--sp,0));transform-origin:left}
+.pill{margin:14px auto 0;max-width:1000px;width:calc(100% - 28px);display:flex;align-items:center;justify-content:space-between;gap:14px;padding:9px 12px 9px 20px;border-radius:99px;background:color-mix(in srgb,var(--card) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 12px 30px -18px rgba(11,33,80,.5)}
+.pill b{font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:9px}
+.pill b i{width:28px;height:28px;border-radius:9px;background:var(--blue);color:#fff;display:grid;place-items:center;font:800 .80rem Arial;font-style:normal}
+.pill nav a{margin:0 12px;text-decoration:none;font-size:.96rem;font-weight:600;color:var(--mut)}
+.pill nav a:hover{color:var(--ink)}
+.pill .btn{padding:10px 20px;font-size:.94rem}
+/* hero */
+.hero{min-height:100svh;padding:140px 0 80px;display:flex;align-items:center;overflow:hidden}
+.hero .w{display:grid;grid-template-columns:1.02fr .98fr;gap:40px;align-items:center;position:relative;z-index:1}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;animation:drift 14s ease-in-out infinite alternate}
+.b1{width:480px;height:480px;background:#9cc0f5;right:-100px;top:60px}
+.b2{width:340px;height:340px;background:#cfe0ff;left:-80px;bottom:-40px;animation-delay:-6s}
+@keyframes drift{to{transform:translate(-50px,40px) scale(1.12)}}
+.lead{font-size:1.2rem;max-width:30em;margin:24px 0 32px}
+.row{display:flex;gap:14px;flex-wrap:wrap}
+.proof{display:flex;gap:26px;margin-top:38px;flex-wrap:wrap}
+.proof b{display:block;font-size:1.7rem;font-weight:800;color:var(--blue);letter-spacing:-.03em;line-height:1}
+.proof span{font-size:.88rem;color:var(--mut)}
+.stage{position:relative;perspective:900px;min-height:520px;display:grid;place-items:center}
+.paper{width:min(380px,100%);background:#fff;color:#0b2150;border-radius:18px;padding:30px 28px;box-shadow:0 40px 70px -30px rgba(11,33,80,.55);transform:rotateY(var(--ry,-8deg)) rotateX(var(--rx,4deg));transition:transform .2s;font-size:.86rem;line-height:1.5}
+.paper .nm{font:800 1.35rem Georgia,serif;letter-spacing:-.01em}
+.paper h5{margin:16px 0 4px;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:#2a5db0}
+.paper p{color:#33496f;margin:0}
+.paper ul{margin:0;padding-left:16px;color:#33496f}
+.paper mark{background:#cfe3ff;color:#0b2150;padding:0 3px;border-radius:3px}
+.paper li{opacity:0;transform:translateX(-10px);animation:li .6s forwards}
+.paper li:nth-child(1){animation-delay:3.2s}.paper li:nth-child(2){animation-delay:3.8s}.paper li:nth-child(3){animation-delay:4.4s}
+@keyframes li{to{opacity:1;transform:none}}
+.caret::after{content:"";display:inline-block;width:2px;height:1em;background:#2a5db0;margin-left:2px;vertical-align:-2px;animation:bl 1s steps(2) infinite}
+@keyframes bl{50%{opacity:0}}
+.ats{position:absolute;right:-6px;top:30px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 24px 40px -22px rgba(11,33,80,.5);animation:fl 5s ease-in-out infinite}
+.ats svg{width:64px;height:64px;transform:rotate(-90deg)}
+.ats circle{fill:none;stroke-width:8;stroke-linecap:round}
+.ats .tr{stroke:var(--line)}.ats .fg{stroke:#2fbf71;stroke-dasharray:213.6;stroke-dashoffset:213.6;transition:stroke-dashoffset 2.4s cubic-bezier(.2,.8,.2,1) .4s}
+.ats strong{font-size:1.5rem;display:block;line-height:1}.ats small{color:var(--mut);font-size:.82rem}
+.fc{position:absolute;background:var(--card);border:1px solid var(--line);padding:9px 15px;border-radius:99px;font-size:.88rem;font-weight:700;box-shadow:0 16px 30px -18px rgba(11,33,80,.5);animation:fl 6s ease-in-out infinite}
+.fc.a{left:-10px;top:120px;animation-delay:-1s}.fc.b{left:20px;bottom:60px;animation-delay:-3s}.fc.c{right:0;bottom:130px;animation-delay:-2s}
+@keyframes fl{50%{transform:translateY(-14px)}}
+/* marquee */
+.mq{overflow:hidden;background:var(--deep);color:#e8f0ff;padding:20px 0;transform:rotate(-1.2deg);margin:0 -20px}
+.mq div{display:flex;gap:46px;width:max-content;animation:mq 30s linear infinite;font-weight:700;font-size:1.05rem;letter-spacing:.02em;white-space:nowrap}
+.mq span::after{content:"✦";margin-left:46px;color:var(--sky)}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* reveal */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1) var(--d,0s),transform .8s cubic-bezier(.2,.8,.2,1) var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+.head{max-width:640px;margin-bottom:46px}.head p{font-size:1.1rem;margin-top:14px}
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:24px;transition:transform .35s,box-shadow .35s,border-color .35s;position:relative;overflow:hidden}
+.tile:hover{transform:translateY(-8px) rotate(-.6deg);box-shadow:0 26px 40px -26px rgba(11,33,80,.5);border-color:var(--blue)}
+.tile .n{font:italic 400 1.5rem Georgia,serif;color:var(--blue);display:block;margin-bottom:34px}
+.tile p{font-size:.99rem;margin:8px 0 0}
+.tile.big{grid-column:span 2;grid-row:span 2;background:linear-gradient(160deg,#2a5db0,#14336f);color:#fff;border:0;display:flex;flex-direction:column;justify-content:flex-end;min-height:360px}
+.tile.big .n{color:var(--sky);margin-bottom:auto}.tile.big p{color:#cfe0ff}
+.tile.big::before{content:"";position:absolute;right:-30px;top:30px;width:230px;height:300px;background:#fff;border-radius:14px;transform:rotate(8deg);opacity:.95;background-image:repeating-linear-gradient(180deg,transparent 0 22px,#cdd9ec 22px 28px)}
+.tile.vid .play{width:46px;height:46px;border-radius:50%;background:var(--blue);display:grid;place-items:center;color:#fff;margin-bottom:22px;animation:pulse2 2s infinite}
+@keyframes pulse2{0%{box-shadow:0 0 0 0 rgba(42,93,176,.5)}100%{box-shadow:0 0 0 16px rgba(42,93,176,0)}}
+/* slider */
+.ba{position:relative;max-width:860px;margin:0 auto;border-radius:26px;overflow:hidden;border:1px solid var(--line);background:var(--card);min-height:300px;--p:50%;user-select:none}
+.ba .side{position:absolute;inset:0;padding:34px 36px;font-size:1.02rem}
+.ba .bf{color:#6b7b95}.ba .af{background:var(--pale);color:var(--ink);clip-path:inset(0 0 0 var(--p))}
+.ba h4{font-size:.84rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;color:var(--blue)}
+.ba .bf h4{color:#8a97ad}.ba ul{padding-left:18px;margin:8px 0}.ba mark{background:#bcd6f8;color:var(--ink);padding:0 3px;border-radius:3px}
+.ba .hd{position:absolute;top:0;bottom:0;left:var(--p);width:3px;background:var(--blue);pointer-events:none}
+.ba .hd::after{content:"⇆";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:1.2rem}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+/* checker */
+.chk{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.chk textarea{width:100%;min-height:170px;border-radius:18px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:16px;font:inherit;font-size:1.01rem;resize:vertical}
+.chk label{font-weight:700;font-size:.96rem;display:block;margin-bottom:8px}
+.res{margin-top:22px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;display:none;gap:24px;align-items:center}
+.res.show{display:flex}
+.res .pc{font-size:3.4rem;font-weight:800;color:var(--blue);letter-spacing:-.04em;line-height:1}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.tags span{background:var(--pale);padding:4px 12px;border-radius:99px;font-size:.90rem;font-weight:600}
+/* journey */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.jc{background:var(--card);border:1px solid var(--line);border-radius:26px;overflow:hidden;transition:transform .4s}
+.jc:hover{transform:translateY(-8px)}
+.jc .im{background:#fff;aspect-ratio:4/3;overflow:hidden}.jc img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .9s}.jc:hover img{transform:scale(1.07)}
+.jc .tx{padding:24px 26px 30px}.jc .tx span{font:italic 400 1.01rem Georgia,serif;color:var(--blue)}
+/* timeline */
+.tl{position:relative;padding-left:56px;max-width:720px}
+.tl::before,.tl::after{content:"";position:absolute;left:17px;top:6px;width:4px;border-radius:4px}
+.tl::before{bottom:6px;background:var(--line)}.tl::after{height:calc((100% - 12px) * var(--tp,0));background:var(--blue)}
+.st{position:relative;padding-bottom:42px}.st:last-child{padding-bottom:0}
+.st i{position:absolute;left:-56px;top:0;width:38px;height:38px;border-radius:50%;background:var(--bg);border:3px solid var(--line);display:grid;place-items:center;font:800 .86rem Arial;font-style:normal;transition:.4s}
+.st.on i{background:var(--blue);border-color:var(--blue);color:#fff}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:40px}
+.sc{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px}
+.sc strong{display:block;font-size:clamp(2.6rem,5.4vw,4rem);font-weight:800;letter-spacing:-.04em;color:var(--blue);line-height:1}
+.bars{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.br{margin:16px 0}.br .t{display:flex;justify-content:space-between;font-size:.98rem;margin-bottom:7px;font-weight:600}
+.br .b{height:10px;border-radius:9px;background:var(--line);overflow:hidden}.br i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--sky));border-radius:9px;transition:width 1.4s cubic-bezier(.2,.8,.2,1) .2s}
+.in .br i,.br.in i{width:var(--w)}
+.q{border-left:4px solid var(--blue);padding:4px 0 4px 16px;margin:14px 0;color:var(--mut)}
+/* pay */
+.pay{background:var(--deep);color:#eaf1ff;border-radius:36px;padding:56px;margin:0 -8px;position:relative;overflow:hidden}
+.pay::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(#2a5db0,transparent 65%);right:-120px;top:-140px;opacity:.7}
+.pay p{color:#a9bde0}.pay .ac{color:var(--sky)}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:36px;position:relative}
+.bank{background:linear-gradient(135deg,#f2b64d,#e8932a);color:#3b2400;border-radius:22px;padding:24px 26px;box-shadow:0 30px 50px -28px #000}
+.bank small{display:block;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.80rem;opacity:.75}
+.bank .no{font:800 clamp(1.5rem,3.4vw,2.1rem) ui-monospace,Menlo,monospace;letter-spacing:.04em;margin:8px 0 4px}
+.bank .nm{font-weight:700;letter-spacing:.05em}
+.cp{margin-top:16px;background:#3b2400;color:#fff;border:0;border-radius:99px;padding:10px 20px;font:700 .92rem inherit;font-family:inherit;cursor:pointer}
+.fm label{display:block;font-weight:700;font-size:.92rem;margin:14px 0 6px}
+.fm input{width:100%;padding:13px 16px;border-radius:14px;border:1px solid #2c4a86;background:#0b2150;color:#fff;font:inherit}
+.fm input::placeholder{color:#7f95bd}
+.tot{display:flex;justify-content:space-between;align-items:baseline;margin:18px 0;padding:14px 0;border-top:1px dashed #2c4a86;border-bottom:1px dashed #2c4a86}
+.tot b{font-size:1.8rem;letter-spacing:-.03em}
+.qr{display:none;margin-top:24px;background:#fff;color:#0b2150;border-radius:22px;padding:22px;gap:22px;align-items:center}
+.qr.show{display:flex;animation:pop .5s cubic-bezier(.2,1.2,.3,1)}
+@keyframes pop{from{opacity:0;transform:scale(.9)}}
+.qr .code{width:170px;flex:none}.qr .code svg{width:100%;height:auto;display:block}
+.qr p{color:#33496f;font-size:.96rem}.qr b.id{font-family:ui-monospace,Menlo,monospace;font-size:1.05rem}
+.note{font-size:.88rem;color:#8ea4cc;margin-top:16px}
+details{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 22px;margin-top:12px}
+summary{cursor:pointer;font-weight:700}details p{margin-top:10px}
+footer{padding:50px 0 60px;border-top:1px solid var(--line);margin-top:60px}
+footer .w{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;color:var(--mut);font-size:.98rem}
+footer a{font-weight:700;margin-left:20px;text-decoration:none;color:var(--ink)}
+[hidden]{display:none!important}
+.back{font-weight:700;text-decoration:none;color:var(--mut)}.back:hover{color:var(--blue)}
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0 20px}
+.steps4 div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;font-weight:600;font-size:.98rem}
+.steps4 b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff;margin-bottom:8px}
+@media(max-width:860px){.steps4{grid-template-columns:1fr 1fr}.hero .w,.pg,.chk,.bars,.trio,.stats{grid-template-columns:1fr}.bento{grid-template-columns:1fr 1fr}.tile.big{grid-column:span 2}.stage{min-height:460px}.pill nav{display:none}.pay{padding:30px 22px;border-radius:26px}.qr.show,.res.show{flex-direction:column;align-items:flex-start}section{padding:70px 0}.hero{padding-top:120px}.ats{right:0}}
+@media(max-width:520px){.bento{grid-template-columns:1fr}.tile.big{grid-column:auto}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}.paper li{opacity:1;transform:none}}
+
+.ph{padding:150px 0 40px;position:relative;overflow:hidden}
+.ck{display:none;grid-template-columns:.85fr 1.15fr;gap:28px;margin-top:26px;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:30px}.ck.show{display:grid;animation:pop .5s}
+@keyframes pop{from{opacity:0;transform:scale(.96)}}
+.ov{text-align:center}.pc{font-size:4.6rem;font-weight:800;color:var(--blue);line-height:1;letter-spacing:-.05em}.vd{font-weight:700;margin:6px 0 4px}.radar{width:100%;max-width:270px}
+.dm{margin:0 0 16px}.dm .t{display:flex;justify-content:space-between;font-weight:700;font-size:.99rem}.dm .bb{height:8px;border-radius:8px;background:var(--line);overflow:hidden;margin:6px 0}.dm .bb i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--sky));transition:width 1.1s cubic-bezier(.2,.8,.2,1)}.dm small{color:var(--mut);display:block;line-height:1.5}
+.tips{display:none;margin-top:18px;background:var(--pale);border-radius:22px;padding:22px 26px}.tips.show{display:block}.tips ol{margin:8px 0 0;padding-left:20px;color:var(--mut)}
+.mini{font-size:.91rem;padding:10px 20px}
+.mc{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.ck,.mc{grid-template-columns:1fr}}
+
+html{overflow-x:clip}
+.filmwrap{overflow:hidden;padding:34px 0}
+.film{background:#06152f;padding:34px 0 28px;position:relative;box-shadow:0 20px 40px -24px rgba(6,21,47,.7)}
+.film::before,.film::after{content:"";position:absolute;left:0;right:0;height:14px;background:var(--bg);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='14'%3E%3Crect x='9' y='1' width='16' height='12' rx='3'/%3E%3C/svg%3E") repeat-x;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='14'%3E%3Crect x='9' y='1' width='16' height='12' rx='3'/%3E%3C/svg%3E") repeat-x}
+.film::before{top:9px}.film::after{bottom:9px}
+.reel{display:flex;width:max-content;will-change:transform}
+.fr{flex:none;width:212px;margin:0 8px}
+.fb{height:138px;border-radius:8px;background:#e9f1ff;color:#0b2150;overflow:hidden;display:grid;place-items:center;text-align:center;border:1px solid #274b8f}
+.fb img{width:100%;height:100%;object-fit:contain;display:block}
+.fb.big{align-content:center;gap:2px}.fb.big span{font:italic 400 1rem Georgia,serif;color:#2a5db0}.fb.big b{font-size:1.5rem;letter-spacing:-.03em;line-height:1.1}
+.fb .mc2{width:78%;text-align:left}.fb .mc2 b{font:800 1.01rem Georgia,serif;display:block;margin-bottom:6px}.fb .mc2 i{display:block;height:6px;background:#bcd0ee;margin:6px 0;border-radius:3px}
+.fb .kw{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:12px}.fb .kw u{text-decoration:none;background:#2a5db0;color:#fff;border-radius:99px;padding:4px 10px;font-size:.84rem;font-weight:700}
+.fr em{display:block;text-align:center;font:600 .72rem ui-monospace,Menlo,monospace;color:#6f8fc4;margin-top:7px;letter-spacing:.2em;font-style:normal}
+.pill{position:relative}.rt{display:flex;gap:8px;align-items:center}
+.mb{display:none;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:1.15rem;cursor:pointer;place-items:center}
+@media(max-width:860px){
+.mb{display:inline-grid}
+.pill{padding:8px 10px 8px 16px}
+.pill nav{position:absolute;top:calc(100% + 10px);left:0;right:0;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:10px;box-shadow:0 24px 40px -22px rgba(11,33,80,.5)}
+.pill.open nav{display:flex}.pill nav a{margin:0;padding:13px 16px;border-radius:12px;font-size:1rem}.pill nav a:hover{background:var(--pale)}
+.hero{min-height:auto;padding:112px 0 56px}
+.stage{min-height:0;display:flex;flex-direction:column;gap:14px;align-items:center}
+.paper{transform:none;width:100%;max-width:420px}
+.ats{position:static;animation:none;align-self:flex-start}.fc{display:none}
+.tile.big::before{display:none}.tile.big{min-height:220px}
+.pay{margin:0}.proof{gap:18px}
+.ba{min-height:360px}.ba .side{padding:24px 22px;font-size:1.01rem}
+.head{margin-bottom:30px}.fr{width:176px}.fb{height:116px}
+}
+@media(max-width:520px){h1{font-size:2.5rem}.pc{font-size:3.6rem}.qr .code{width:150px}.pill .btn{padding:9px 16px}.pay{padding:26px 18px}.steps4{grid-template-columns:1fr}.btn{padding:13px 22px}}
+.lg{display:flex;border:1px solid var(--line);border-radius:99px;padding:3px;background:var(--card)}
+.lg button{border:0;background:transparent;color:var(--mut);font:700 .84rem inherit;font-family:inherit;padding:7px 11px;border-radius:99px;cursor:pointer}
+.lg button[aria-pressed="true"]{background:var(--blue);color:#fff}
+.pm{display:none}
+@media(max-width:860px){.pm{display:block}.pill>.rt .btn{display:none}}
+@media(max-width:380px){.pill b{font-size:.91rem}.pill b i{display:none}.lg button{padding:7px 9px}}
+.sv{list-style:none;display:flex;gap:10px;flex-wrap:wrap;padding:0;margin:0 0 34px}
+.sv li{display:flex;align-items:center;gap:10px;background:var(--pale);color:var(--mut);padding:9px 20px 9px 10px;border-radius:99px;font-weight:600;font-size:1.01rem;transition:.4s}
+.sv li b{width:28px;height:28px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;font-size:.91rem;color:var(--ink)}
+.sv li.active{background:var(--blue);color:#fff}.sv li.active b{background:#fff;color:var(--blue);border-color:#fff}
+.sv li.done{background:#d9efe1;color:#1f6b41}.sv li.done b{background:#2fbf71;color:#fff;border-color:#2fbf71;font-size:0}.sv li.done b::after{content:"✓";font-size:.96rem}
+.qb{background:#fff;border-radius:24px;padding:12px;max-width:400px;margin:20px 0 16px;box-shadow:0 30px 50px -28px #000}.qb img{width:100%;height:auto;display:block;border-radius:14px}
+.ord{display:none;margin-top:24px;background:#fff;color:#0b2150;border-radius:22px;padding:24px 26px}.ord.show{display:block;animation:pop .5s}
+.ord .rw{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid #e1e8f4;font-size:1.04rem}.ord .rw span:last-child{text-align:right;word-break:break-word}
+.ord .tid{font:800 1.6rem ui-monospace,Menlo,monospace;letter-spacing:.04em;margin:2px 0 10px}.ord p{color:#52668a}.ord .btn{width:100%;justify-content:center;margin-top:14px}.ord .btn.o{color:#0b2150;border-color:#c9d6ea}
+.err{min-height:1.5em;color:#ff9b93;font-size:1.01rem;margin:12px 0 0}.hr2{border:0;border-top:1px solid rgba(255,255,255,.16);margin:30px 0}
+.back{font-weight:700;text-decoration:none;color:var(--mut)}
+@media(max-width:860px){.sv li{font-size:.91rem;padding-right:14px}}
+.ba .bf>*,.ba .af>*{max-width:46%}
+.ba .af{text-align:right}.ba .af>*{margin-left:auto}.ba .af>b{display:block}
+.ba .af ul{list-style:none;padding:0;margin:10px 0 0 auto}.ba .af li{margin:8px 0}
+@media(max-width:860px){.ba .bf>*,.ba .af>*{max-width:100%}}
+</style></head><body id="top">
+<header class="top" id="hd"><div class="bar0" id="sp"></div>
+<div class="pill"><a href="#" "#" data-l="home" style="text-decoration:none"><b><i>CV</i>Starter Kit</b></a><nav><a href="#" data-l="home" data-h="#paket">Isi paket</a><a href="#" data-l="home" data-h="#contoh">Contoh</a><a href="#" data-l="home" data-h="#cek">Cek CV</a><a href="#">MVP</a><a class="pm" href="#" data-l="pesan">Pesan</a></nav><div class="rt"><div class="lg" role="group" aria-label="Language"><button type="button" data-lg="en" aria-pressed="false">EN</button><button type="button" data-lg="id" aria-pressed="true">IND</button></div><a class="btn" href="#" data-l="pesan">Pesan</a><button class="mb" id="mb" type="button" aria-label="Menu" aria-expanded="false">☰</button></div></div></header>
+<div class="ph"><div class="blob b1" style="top:0"></div><div class="w" style="position:relative;z-index:1"><span class="chip"><i class="dot"></i>Edisi MVP</span><h1 style="margin-top:22px">Versi awal yang siap <span class="ac">diuji.</span></h1><p class="lead">MVP dibuat sederhana dengan fitur yang paling dibutuhkan konsumen, supaya cepat diuji ke mahasiswa dan fresh graduate sebelum dikembangkan.</p>
+<div class="row"><a class="btn" href="https://drive.google.com/drive/folders/1q5ROHSN_d3C-__-ANSuf1f0YUe9s6FTy" target="_blank" rel="noopener">Buka folder MVP ↗</a><a class="btn o" href="#" data-l="pesan">Pesan CV Starter Kit</a></div></div></div>
+<section><div class="w"><div class="head rv"><span class="chip">Isi MVP</span><h2 style="margin-top:16px">Dua hal yang paling <span class="ac">dibutuhkan.</span></h2></div>
+<div class="mc"><div class="tile rv"><span class="n">I</span><h3>Beberapa template CV ATS</h3><p>Format bersih dan mudah diedit untuk mahasiswa dan fresh graduate.</p></div><div class="tile rv" style="--d:.1s"><span class="n">II</span><h3>Panduan singkat pengisian CV</h3><p>Langkah praktis mengisi tiap bagian CV.</p></div><div class="tile rv" style="--d:.2s"><span class="n">III</span><h3>Folder MVP di Google Drive</h3><p>Semua file versi awal ada di folder yang bisa dibuka lewat tombol di atas.</p></div></div></div></section>
+<section style="background:var(--pale)"><div class="w"><div class="head rv"><span class="chip">Alur pengembangan</span><h2 style="margin-top:16px">Dari MVP ke <span class="ac">produk lengkap.</span></h2></div>
+<div class="tl" id="tl"><div class="st rv"><i>1</i><h3>MVP</h3><p>Template CV ATS dan panduan singkat pengisian, dibuat sederhana agar cepat diuji.</p></div>
+<div class="st rv"><i>2</i><h3>Testing</h3><p>Diuji ke mahasiswa dan fresh graduate untuk melihat tiga hal: apakah template mudah digunakan, apakah desainnya sesuai, dan apakah panduannya membantu.</p></div>
+<div class="st rv"><i>3</i><h3>Development</h3><p>Berdasarkan masukan pengguna, produk dikembangkan dengan template CV tambahan, contoh pengalaman organisasi dan magang, template cover letter, serta checklist CV.</p></div></div></div></section>
+<section><div class="w"><div class="rv" style="background:var(--deep);color:#eaf1ff;border-radius:34px;padding:50px;text-align:center"><h2>Mau ikut <span class="ac" style="color:var(--sky)">menguji?</span></h2><p style="color:#a9bde0;max-width:32em;margin:12px auto 26px">Coba templatenya dan ceritakan mana yang membantu dan mana yang kurang. Masukanmu menentukan fitur berikutnya.</p><div class="row" style="justify-content:center"><a class="btn" style="background:#eaf1ff;color:#0b2150;border-color:#eaf1ff" href="https://wa.me/6287874359799?text=Halo%2C%20saya%20mau%20ikut%20uji%20coba%20MVP%20CV%20Starter%20Kit" target="_blank" rel="noopener">Kirim masukan via WhatsApp →</a><a class="btn o" style="color:#eaf1ff;border-color:#3a5c9c" href="#" data-l="pesan">Pesan sekarang</a></div></div></div></section>
+<footer><div class="w"><span>CV Starter Kit — Template · Panduan · Contoh</span><span>WhatsApp +62 878-7435-9799<a href="https://wa.me/6287874359799" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/cvstarterkit?vrfl=enQwZHY2ajF0dDh5" target="_blank" rel="noopener">Instagram</a></span></div></footer>
+<script>
+(function(){var $=function(i){return document.getElementById(i)},rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var CF={"rel": {"home": "index.html", "mvp": "mvp.html", "pesan": "pesan.html"}, "abs": {"home": "https://claude.ai/artifact/HD526pAsH6waJKWTc37up6", "mvp": "https://claude.ai/artifact/795UwrFqcPAyNDaBxoAFMc", "pesan": "https://claude.ai/artifact/LVYCwKbE7j6prXktgVoxwJ"}},isRel=location.protocol==='file:'||((location.protocol==='http:'||location.protocol==='https:')&&!/claude|anthropic/i.test(location.hostname)),L=Object.assign({},isRel?CF.rel:CF.abs,{abs:!isRel});
+document.querySelectorAll('[data-l]').forEach(function(a){a.href=L[a.dataset.l]+(a.dataset.h||'');if(L.abs){a.target='_blank';a.rel='noopener'}});
+var hd=$('hd'),last=0,hooks=[],pl=document.querySelector('.pill'),mb=$('mb');
+mb.addEventListener('click',function(){var o=pl.classList.toggle('open');mb.setAttribute('aria-expanded',o)});pl.querySelectorAll('nav a').forEach(function(a){a.addEventListener('click',function(){pl.classList.remove('open')})});
+function onS(){var y=scrollY,h=document.documentElement.scrollHeight-innerHeight;hd.style.setProperty('--sp',h>0?y/h:0);
+if(y>140&&y>last+4){hd.classList.add('hide');pl.classList.remove('open')}else if(y<last-4||y<=140)hd.classList.remove('hide');last=y;hooks.forEach(function(f){f()})}
+addEventListener('scroll',onS,{passive:true});
+addEventListener('mousemove',function(e){if(e.clientY<70)hd.classList.remove('hide')});hd.addEventListener('focusin',function(){hd.classList.remove('hide')});
+function cnt(el){var to=parseFloat(el.dataset.c),sf=el.dataset.s||'',t0=null;function f(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1400),v=to*(1-Math.pow(1-k,3));el.textContent=(to%1?v.toFixed(1):Math.round(v)).toString().replace('.',lang==='en'?'.':',')+sf;if(k<1)requestAnimationFrame(f)}rm?(el.textContent=String(to).replace('.',lang==='en'?'.':',')+sf):requestAnimationFrame(f)}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');if(e.target.dataset.c)cnt(e.target);io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.rv,.br,[data-c]').forEach(function(n){io.observe(n)});
+
+var lang='id';try{var qq=new URLSearchParams(location.search).get('lang');if(qq==='en'||qq==='id')lang=qq;else lang=localStorage.getItem('cvsk_lang')||'id'}catch(e){}
+var D={"CV Starter Kit — CV ATS yang siap dilirik perekrut": "CV Starter Kit — ATS-ready CVs that recruiters notice", "Isi paket": "What's inside", "Contoh": "Examples", "Cek CV": "CV Check", "Pesan": "Order", "Untuk mahasiswa dan fresh graduate": "For students and fresh graduates", "CV-mu, siap": "Your CV, ready to be", "dilirik": "noticed", "perekrut.": "by recruiters.", "Template CV ATS, contoh tulisan, dan video panduan dalam satu paket. Ubah pengalaman kuliah dan organisasi menjadi CV yang meyakinkan.": "ATS CV templates, writing examples, and a video guide in one package. Turn your campus and organization experience into a convincing CV.", "Pesan sekarang →": "Order now →", "Lihat isi paket": "See what's inside", "responden survei": "survey respondents", "butuh template ATS": "need an ATS template", "siap membeli": "ready to buy", "Nama Lengkap": "Full Name", "Profil": "Profile", "Pengalaman Organisasi": "Organization Experience", "Memimpin": "Led", "12 panitia kegiatan kampus": "12 committee members at a campus event", "Mengelola": "Managed", "anggaran": "the budget", "dan rundown acara": "and event rundown", "Berkoordinasi dengan pihak eksternal": "Coordinated with external parties", "Keahlian": "Skills", "Microsoft Office · Komunikasi · Kerja sama tim": "Microsoft Office · Communication · Teamwork", "Skor ATS contoh": "Sample ATS score", "✓ Kata kunci pas": "✓ Matching keywords", "✓ Format ATS friendly": "✓ ATS-friendly format", "Semua yang kamu butuhkan,": "Everything you need,", "satu paket.": "in one package.", "File digital yang bisa diedit di Canva, Microsoft Word, atau Google Docs.": "Digital files you can edit in Canva, Microsoft Word, or Google Docs.", "Template CV ATS": "ATS CV Template", "Versi mahasiswa dan versi fresh graduate, dengan format bersih yang mudah dibaca sistem ATS.": "A student version and a fresh graduate version, in a clean format that ATS systems read easily.", "Contoh profil diri": "Profile summary examples", "Kalimat pembuka CV yang bisa kamu sesuaikan.": "Opening lines for your CV that you can adapt.", "Organisasi dan kepanitiaan": "Organizations and committees", "Ubah perannya jadi poin CV yang jelas.": "Turn your roles into clear CV points.", "Magang dan proyek kuliah": "Internships and course projects", "Tulis tugas dan hasil kerja dengan bahasa perekrut.": "Write your tasks and results in a recruiter's language.", "Video panduan": "Video guide", "Cara memakai template dan mengisi CV.": "How to use the template and fill in your CV.", "Panduan CV ATS": "ATS CV guide", "Langkah demi langkah, termasuk kata kunci lowongan.": "Step by step, including job-posting keywords.", "Template surat lamaran siap isi.": "A ready-to-fill application letter template.", "Checklist CV": "CV checklist", "Pengecekan terakhir sebelum kirim.": "A final check before you send.", "Geser untuk melihat": "Slide to compare", "Dari biasa saja ke": "From ordinary to", "meyakinkan.": "convincing.", "Contoh ilustrasi cara contoh tulisan di paket membantu mengubah pengalaman organisasi.": "An illustration of how the writing examples in the package help reshape your organization experience.", "Sebelum": "Before", "Pengalaman": "Experience", "Anggota panitia Dies Natalis.": "Member of the Dies Natalis committee.", "Ikut membantu jalannya acara.": "Helped with the event.", "Sesudah": "After", "Staf Divisi Acara, Panitia Dies Natalis": "Event Division Staff, Dies Natalis Committee", "Menyusun rundown": "Prepared the rundown", "dan mengoordinasi tim saat acara": "and coordinated the team during the event", "Berkomunikasi": "Communicated", "dengan pengisi acara dan pihak kampus": "with event performers and campus staff", "Memastikan kegiatan berjalan sesuai jadwal": "Ensured activities ran on schedule", "Geser untuk membandingkan sebelum dan sesudah": "Slide to compare before and after", "Coba sekarang": "Try it now", "Periksa kesehatan": "Check the health of", "CV-mu.": "your CV.", "Tempel isi CV, dan lowongan kalau ada. Dinilai dari lima sisi: kata kunci, struktur, kata kerja, hasil terukur, dan keterbacaan. Teksmu diproses di browser dan tidak dikirim ke mana pun.": "Paste your CV, and a job posting if you have one. It is scored on five sides: keywords, structure, action verbs, measurable results, and readability. Your text is processed in your browser and never sent anywhere.", "Isi CV-mu": "Your CV content", "Tempel teks CV-mu di sini...": "Paste your CV text here...", "Deskripsi lowongan (opsional)": "Job description (optional)", "Tempel lowongan untuk ikut menilai kecocokan kata kunci...": "Paste a job posting to also score keyword match...", "Periksa CV": "Check CV", "Isi contoh CV": "Fill sample CV", "Kosongkan": "Clear", "Grafik radar skor CV": "CV score radar chart", "Tiga saran terpenting": "Top three suggestions", "Penilaian ini memakai aturan sederhana, bukan sistem ATS asli. Anggap sebagai petunjuk awal.": "This scoring uses simple rules, not a real ATS. Treat it as a first hint.", "Perjalananmu": "Your journey", "Dari kampus ke": "From campus to", "dunia kerja.": "the working world.", "Ilustrasi sesi wawancara kerja": "Illustration of a job interview", "Wawancara": "Interview", "Siap saat dipanggil": "Ready when called", "CV yang jelas membuatmu lebih percaya diri menjawab pertanyaan pertama.": "A clear CV helps you answer the first question with confidence.", "Ilustrasi pencari kerja melamar lewat laptop": "Illustration of a job seeker applying on a laptop", "Melamar": "Apply", "Kirim dari laptop": "Send from your laptop", "CV ATS dan cover letter yang rapi, siap dikirim hari ini.": "A neat ATS CV and cover letter, ready to send today.", "Ilustrasi mentor membimbing peserta magang": "Illustration of a mentor guiding an intern", "Magang": "Internship", "Langkah pertama": "First step", "Mulai dengan pengalaman kuliah yang tertulis jelas dan relevan.": "Start with campus experience written clearly and relevantly.", "Edisi MVP": "MVP Edition", "Lihat versi awalnya,": "See the first version,", "dan ikut menguji.": "and help test it.", "Beberapa template CV ATS dan panduan singkat pengisian, dibuat sederhana agar cepat diuji.": "A few ATS CV templates and a short filling guide, kept simple so they can be tested quickly.", "Buka halaman MVP →": "Open the MVP page →", "Bukti kebutuhan": "Proof of need", "Hasil survei": "Survey results from", "57 responden.": "57 respondents.", "memilih template CV ATS sebagai fitur paling dibutuhkan": "chose an ATS CV template as the most needed feature", "membutuhkan panduan membuat CV": "need a guide to writing a CV", "bersedia atau sangat bersedia membeli": "willing or very willing to buy", "Bagian CV yang paling sulit": "The hardest CV parts", "Desain dan format": "Design and format", "Menulis profil diri": "Writing a profile summary", "Membuat CV ATS": "Making an ATS CV", "Pengalaman kerja atau magang": "Work or internship experience", "Pengalaman organisasi": "Organization experience", "21,1%": "21.1%", "19,3%": "19.3%", "17,5%": "17.5%", "10,5%": "10.5%", "Kata responden wawancara": "What interviewees said", "Bingung menulis pengalaman organisasi dan magang.": "Confused about writing organization and internship experience.", "Pernah memakai template ATS, tapi belum paham cara kerjanya.": "Has used an ATS template, but doesn't understand how it works.", "Bingung menyesuaikan CV dengan lowongan.": "Confused about tailoring a CV to a job posting.", "Tidak yakin CV sudah sesuai standar.": "Unsure the CV meets the standard.", "Pertanyaan": "Frequently asked", "umum": "questions", "Apa itu CV ATS?": "What is an ATS CV?", "ATS adalah sistem yang dipakai perusahaan untuk menyaring CV. CV ATS memakai format sederhana dan kata kunci yang sesuai lowongan.": "An ATS is a system companies use to screen CVs. An ATS CV uses a simple format and keywords that match the job posting.", "Saya belum pernah kerja, apakah cocok?": "I've never worked before, is this for me?", "Cocok. Ada contoh untuk organisasi, kepanitiaan, proyek kuliah, dan magang.": "Yes. There are examples for organizations, committees, course projects, and internships.", "File bisa diedit di mana?": "Where can I edit the files?", "Di Canva, Microsoft Word, atau Google Docs.": "In Canva, Microsoft Word, or Google Docs.", "Bagaimana setelah transfer?": "What happens after I transfer?", "Kirim bukti transfer beserta ID pesanan lewat WhatsApp. Kami akan mengirim file ke email atau nomor yang kamu isi.": "Send the transfer proof with your order ID via WhatsApp. We will send the files to the email or number you provided.", "CV Starter Kit — Template · Panduan · Contoh": "CV Starter Kit — Templates · Guide · Examples", "Edisi MVP — CV Starter Kit": "MVP Edition — CV Starter Kit", "Versi awal yang siap": "A first version ready to be", "diuji.": "tested.", "MVP dibuat sederhana dengan fitur yang paling dibutuhkan konsumen, supaya cepat diuji ke mahasiswa dan fresh graduate sebelum dikembangkan.": "The MVP is kept simple with the features consumers need most, so it can be tested quickly with students and fresh graduates before further development.", "Buka folder MVP ↗": "Open MVP folder ↗", "Pesan CV Starter Kit": "Order CV Starter Kit", "Isi MVP": "MVP contents", "Dua hal yang paling": "The two most", "dibutuhkan.": "needed things.", "Beberapa template CV ATS": "Several ATS CV templates", "Format bersih dan mudah diedit untuk mahasiswa dan fresh graduate.": "Clean, easy-to-edit formats for students and fresh graduates.", "Panduan singkat pengisian CV": "Short CV filling guide", "Langkah praktis mengisi tiap bagian CV.": "Practical steps for filling in each part of your CV.", "Folder MVP di Google Drive": "MVP folder on Google Drive", "Semua file versi awal ada di folder yang bisa dibuka lewat tombol di atas.": "All first-version files are in the folder you can open with the button above.", "Alur pengembangan": "Development flow", "Dari MVP ke": "From MVP to", "produk lengkap.": "a complete product.", "Template CV ATS dan panduan singkat pengisian, dibuat sederhana agar cepat diuji.": "ATS CV templates and a short filling guide, kept simple so they can be tested quickly.", "Diuji ke mahasiswa dan fresh graduate untuk melihat tiga hal: apakah template mudah digunakan, apakah desainnya sesuai, dan apakah panduannya membantu.": "Tested with students and fresh graduates on three things: whether the templates are easy to use, whether the design fits, and whether the guide helps.", "Berdasarkan masukan pengguna, produk dikembangkan dengan template CV tambahan, contoh pengalaman organisasi dan magang, template cover letter, serta checklist CV.": "Based on user feedback, the product grows with extra CV templates, organization and internship examples, cover letter templates, and a CV checklist.", "Mau ikut": "Want to help", "menguji?": "test?", "Coba templatenya dan ceritakan mana yang membantu dan mana yang kurang. Masukanmu menentukan fitur berikutnya.": "Try the templates and tell us what helps and what doesn't. Your feedback decides the next features.", "Kirim masukan via WhatsApp →": "Send feedback via WhatsApp →", "Pesan sekarang": "Order now", "Pesan — CV Starter Kit": "Order — CV Starter Kit", "← Kembali ke beranda": "← Back to home", "Selesaikan pesananmu di halaman ini. Empat langkah saja.": "Complete your order on this page. Just four steps.", "Isi data pesanan": "Fill in order details", "Buat QR pesanan": "Create order QR", "Transfer ke rekening": "Transfer to the account", "Kirim bukti via WhatsApp": "Send proof via WhatsApp", "Pesan dan bayar": "Order and pay", "Mulai dari": "Starting from", "Isi data, buat QR pesanan, lalu transfer ke rekening di bawah. Setelah itu kirim bukti transfer lewat WhatsApp dan file langsung kami kirim.": "Fill in your details, create the order QR, then transfer to the account below. Afterward, send the transfer proof via WhatsApp and we'll send the files right away.", "Salin nomor rekening": "Copy account number", "Pembayaran lewat transfer manual. QR di samping membuka chat WhatsApp berisi detail pesananmu, bukan QRIS pembayaran otomatis.": "Payment is by manual transfer. The QR beside it opens a WhatsApp chat with your order details; it is not an automatic QRIS payment.", "Nama": "Name", "Nama lengkap": "Full name", "Email atau WhatsApp (untuk pengiriman file)": "Email or WhatsApp (for file delivery)", "email@domain.com atau 08xxxxxxxxxx": "email@domain.com or 08xxxxxxxxxx", "Total pembayaran": "Total payment", "ID pesanan": "Order ID", "Total transfer": "Transfer total", "ke Mandiri 1210011016940 a.n. FAIZ ARI RAHMADANI.": "to Mandiri 1210011016940 under the name FAIZ ARI RAHMADANI.", "Scan QR dengan HP lain, atau tekan tombol di bawah untuk mengirim bukti transfer.": "Scan the QR with another phone, or tap the button below to send your transfer proof.", "Kirim bukti via WhatsApp →": "Send proof via WhatsApp →", "Kata kunci": "Keywords", "Struktur": "Structure", "Kata kerja": "Action verbs", "Hasil terukur": "Measurable results", "Keterbacaan": "Readability", "Belum ada di CV: ": "Missing from your CV: ", "Semua kata kunci lowongan sudah muncul.": "All keywords from the job posting appear.", "Tempel deskripsi lowongan untuk menilai sisi ini.": "Paste a job description to score this part.", "Belum terlihat: ": "Not found yet: ", "Semua bagian penting sudah ada.": "All important sections are present.", " kalimat diawali kata kerja kuat.": " sentences start with a strong verb.", " Hindari: ": " Avoid: ", ". Ganti dengan menyusun, mengoordinasi, atau mengelola.": ". Replace with prepared, coordinated, or managed.", " Pertahankan.": " Keep it up.", " capaian berangka ditemukan.": " measurable achievements found.", "Belum ada angka. Tambahkan jumlah panitia, peserta, anggaran, atau persentase hasil.": "No numbers yet. Add team size, participants, budget, or percentage results.", " kata. ": " words. ", "Terlalu singkat, tambahkan detail.": "Too short, add more detail.", "Cukup panjang, usahakan 1 sampai 2 halaman.": "Quite long, aim for 1 to 2 pages.", "Panjang sudah pas.": "Length is just right.", " Ada ": " There are ", " kalimat terlalu panjang.": " overly long sentences.", "Perlu banyak perbaikan": "Needs a lot of work", "Cukup baik, tinggal dipoles": "Good, just needs polishing", "Siap bersaing": "Ready to compete", "profil": "profile", "pendidikan": "education", "pengalaman": "experience", "organisasi": "organizations", "keahlian": "skills", "telepon": "phone", "membantu": "helped", "ikut": "took part in", "bertanggung jawab": "responsible for", "anggota": "member of", "mengikuti": "attended", "mengerjakan tugas": "did tasks", "CV ATS": "ATS CV", "Skor ATS": "ATS Score", "panduan ▶": "guide ▶", "Siap": "Ready", "melamar!": "to apply!", "Komunikasi": "Communication", "Lulusan Manajemen yang terbiasa memimpin tim dan mengelola kegiatan kampus.": "Management graduate experienced in leading teams and running campus activities.", "Tersalin ✓": "Copied ✓", "Salin manual": "Copy manually"},langHooks=[],TT=document.title;
+function T(s){return lang==='en'&&D[s]!==undefined?D[s]:s}
+function walk(){var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null),n,ls=[];while(n=w.nextNode()){var pn=n.parentNode.nodeName;if(pn!=='SCRIPT'&&pn!=='STYLE'&&pn!=='TEXTAREA')ls.push(n)}
+ls.forEach(function(n){if(n.__o===undefined){var k=n.nodeValue.trim();if(!k||D[k]===undefined)return;n.__o=n.nodeValue;n.__k=k}n.nodeValue=lang==='en'?n.__o.replace(n.__k,D[n.__k]):n.__o})}
+function attrs(){document.querySelectorAll('[placeholder],[alt],[aria-label]').forEach(function(el){['placeholder','alt','aria-label'].forEach(function(a){var v=el.getAttribute(a);if(v===null)return;var o='o'+a.replace('-','');if(el.dataset[o]===undefined){if(D[v]===undefined)return;el.dataset[o]=v}el.setAttribute(a,lang==='en'?D[el.dataset[o]]:el.dataset[o])})})}
+function setLinks(){document.querySelectorAll('[data-l]').forEach(function(a){var u=L[a.dataset.l];a.href=u+((lang==='en'&&!L.abs)?(u.indexOf('?')<0?'?lang=en':'&lang=en'):'')+(a.dataset.h||'');if(L.abs){a.target='_blank';a.rel='noopener'}})}
+function applyLang(init){document.documentElement.lang=lang;walk();attrs();document.title=lang==='en'&&D[TT]?D[TT]:TT;
+document.querySelectorAll('[data-lg]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lg===lang)});setLinks();if(!init)langHooks.forEach(function(f){f()});try{localStorage.setItem('cvsk_lang',lang)}catch(e){}}
+document.querySelectorAll('[data-lg]').forEach(function(b){b.addEventListener('click',function(){lang=b.dataset.lg;applyLang()})});
+
+var tl=$('tl');hooks.push(function(){var r=tl.getBoundingClientRect(),p=r.height?Math.min(1,Math.max(0,(innerHeight*.65-r.top)/r.height)):0;tl.style.setProperty('--tp',p);tl.querySelectorAll('.st').forEach(function(s,i){s.classList.toggle('on',p>=i/3+.02)})});
+applyLang(true);
+onS();})();
+</script></body></html>
